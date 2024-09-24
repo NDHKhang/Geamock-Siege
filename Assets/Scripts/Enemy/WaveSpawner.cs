@@ -18,8 +18,6 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeCountdownText;
 
     [SerializeField] Transform startPosition;
-
-    public Transform StartPostition {  get { return startPosition; } }
  
     int waveIndex = 0;
     bool isWaveDone = true;

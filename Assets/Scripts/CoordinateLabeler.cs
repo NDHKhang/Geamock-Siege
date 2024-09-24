@@ -23,11 +23,8 @@ public class CoordinateLabeler : MonoBehaviour
     {
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
-    }
-
-    void Start()
-    {
         gridManager = GridManager.instance;
+
         DisplayCoordinates(); // For runtime mode
     }
 
@@ -46,15 +43,15 @@ public class CoordinateLabeler : MonoBehaviour
 
     void DisplayCoordinates()
     {
-        if (gridManager == null) return;
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize);
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
 
         label.text = $"{coordinates.x}, {coordinates.y}";
     }
 
     void UpdateObjectName()
     {
+        //Debug.Log(coordinates);
         transform.parent.name = coordinates.ToString();
     }
 

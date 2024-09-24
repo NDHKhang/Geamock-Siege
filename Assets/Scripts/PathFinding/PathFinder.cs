@@ -25,9 +25,14 @@ public class PathFinder : MonoBehaviour
 
     void Awake()
     {
-        gridManager = FindAnyObjectByType<GridManager>();
-        if(gridManager != null )
+
+        gridManager = GridManager.instance;
+        if (gridManager != null )
+        {
             grid = gridManager.Grid;
+            startNode = grid[startCoordinates];
+            destinationNode = grid[destinationCoordinates];
+        }
 
         //Vector2Int[] directions;
         //int randomNum = Random.Range(0, 2);
@@ -38,21 +43,9 @@ public class PathFinder : MonoBehaviour
         //    directions = directionsCounterClockWise;
     }
 
-    void Start()
-    {   
-        // Initialize
-        startNode = grid[startCoordinates];
-        destinationNode = grid[destinationCoordinates];
-
-        List<Node> test = GetPath();
-        foreach (Node node in test)
-        {
-            //Debug.Log(node.coordinates);
-        }
-    }
-
     public List<Node> GetPath()
     {
+        gridManager.ResetNodes();
         BreadthFirstSearch();
         return BuildPath();
     }

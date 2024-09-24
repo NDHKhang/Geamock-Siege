@@ -19,12 +19,8 @@ public class GridManager : MonoBehaviour
     {
         if (instance == null) 
             instance = this;
+
         CreateGrid();
-
-    }
-
-    void Start()
-    {
     }
 
     public Node GetNode(Vector2Int coordinates)
@@ -42,15 +38,15 @@ public class GridManager : MonoBehaviour
             grid[coordinates].isWalkable = false;
     }
 
-    //public void ResetNodes()
-    //{ 
-    //    foreach(KeyValuePair<Vector2Int, Node> entry in grid)
-    //    {
-    //        entry.Value.connectedTo = null;
-    //        entry.Value.isExplored = false;
-    //        entry.Value.isPath = false;
-    //    }
-    //}
+    public void ResetNodes()
+    {
+        foreach (KeyValuePair<Vector2Int, Node> entry in grid)
+        {
+            entry.Value.connectedTo = null;
+            entry.Value.isExplored = false;
+            entry.Value.isPath = false;
+        }
+    }
 
     public Vector2Int GetCoordinatesFromPosition(Vector3 position)
     {

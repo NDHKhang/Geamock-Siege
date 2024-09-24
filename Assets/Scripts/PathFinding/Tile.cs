@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
         {
             coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
             //if (!gridManager.Grid[coordinates].isWalkable)
-            if (isPlaceable)
+            if (gameObject.transform.parent.tag != "Path")
                 gridManager.BlockNode(coordinates);
         }
     }
