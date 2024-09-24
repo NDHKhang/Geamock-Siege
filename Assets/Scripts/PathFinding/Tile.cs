@@ -4,17 +4,35 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Waypoint : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     // For creating tower
     [SerializeField] Tower towerPrefab;
     [SerializeField] bool isPlaceable;
+
     BuildManager buildManager;
+    GridManager gridManager;
+    Vector2Int coordinates;
+
     public bool IsPlaceable { get { return isPlaceable; } }
 
     void Start()
     {
+        gridManager = GridManager.instance;
+        HandleTile();
+
         buildManager = BuildManager.instance;
+    }
+
+    void HandleTile()
+    {
+        if (gridManager != null)
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+            //if (!gridManager.Grid[coordinates].isWalkable)
+            if (isPlaceable)
+                gridManager.BlockNode(coordinates);
+        }
     }
 
     void OnMouseDown()

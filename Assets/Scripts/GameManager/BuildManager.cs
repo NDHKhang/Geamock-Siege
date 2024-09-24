@@ -21,15 +21,15 @@ public class BuildManager : MonoBehaviour
         bank = Bank.instance;
     }
 
-    public bool CreateTower(Tower tower, Vector3 waypoint)
+    public bool CreateTower(Tower tower, Vector3 tile)
     {
         if(bank == null) return false;
 
         if(bank.CurrentBalance >= tower.Cost)
         {
-            Instantiate(tower.gameObject, waypoint + positionOffset, Quaternion.identity);
+            Instantiate(tower.gameObject, tile + positionOffset, Quaternion.identity);
             // Spawn build effect then destroy it
-            Instantiate(buildEffect, waypoint + positionOffset, Quaternion.identity);
+            Instantiate(buildEffect, tile + positionOffset, Quaternion.identity);
 
             bank.Withdraw(tower.Cost);
             return true;

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent (typeof (Waypoint))]
+[RequireComponent (typeof (Tile))]
 public class WaypointRenderer : MonoBehaviour
 {
     // For better visual
     [SerializeField] Color hoverColor;
     Color startColor;
     Renderer rend;
-    Waypoint waypoint;
+    Tile tile;
 
     void Awake()
     {
         rend = transform.Find("Mesh").GetComponent<Renderer>();
-        waypoint = GetComponent<Waypoint>();
+        tile = GetComponent<Tile>();
     }
 
     void Start()
@@ -32,7 +32,7 @@ public class WaypointRenderer : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (waypoint.IsPlaceable)
+        if (tile.IsPlaceable)
             rend.materials[1].color = hoverColor;
     }
     void OnMouseExit()

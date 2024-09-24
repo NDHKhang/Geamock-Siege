@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -9,6 +10,7 @@ public class WaveSpawner : MonoBehaviour
     [Header("Time Attribute")]
     [Tooltip("Initialize time")]
     [SerializeField] [Min(0f)] float countdown = 2f;
+    [Tooltip("Time between each wave")]
     [SerializeField] [Min(0f)] float timeBetweenWaves = 5f;
     [Tooltip("Time between spawning each enemy in a wave")]
     [SerializeField] [Min(0f)]float spawnTimer = 1f;
@@ -45,6 +47,8 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         GameObject enemy = ObjectPool.SharedInstance.GetPooledObject();
+
+        if (enemy == null) return;
 
         // Set position and rotation for starting
         enemy.transform.position = startPosition.position;

@@ -30,6 +30,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
+        // Find and return the first object currently not active
         for (int i = 0; i < amountToPool; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
