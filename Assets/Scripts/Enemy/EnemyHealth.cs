@@ -31,21 +31,4 @@ public class EnemyHealth : MonoBehaviour
             enemy.RewardGold();
         }
     }
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.tag == "Bullet")
-    //        TakeDamage();
-    //}
-
-    //void ProcessHit()
-    //{
-    //    health--;
-
-    //    if(health <= 0)
-    //    {
-    //        gameObject.SetActive(false);
-    //        enemy.RewardGold();
-    //    }
-    //}
 }

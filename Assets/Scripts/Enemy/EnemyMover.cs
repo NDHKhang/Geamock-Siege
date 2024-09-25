@@ -32,11 +32,16 @@ public class EnemyMover : MonoBehaviour
 
     void FindPath()
     {
+        Vector2Int coordinates = new Vector2Int();
+
         // Clear path if exist then add new path
         path.Clear();
         
-        if (pathFinder != null) 
-            path = pathFinder.GetPath();
+        if (pathFinder != null)
+        {
+            coordinates = pathFinder.StartCoordinates;
+            path = pathFinder.GetPath(coordinates);
+        }
     }
 
     void FinishPath()

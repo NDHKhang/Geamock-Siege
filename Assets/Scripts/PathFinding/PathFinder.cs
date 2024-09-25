@@ -7,6 +7,8 @@ public class PathFinder : MonoBehaviour
     [SerializeField] Vector2Int startCoordinates;
     [SerializeField] Vector2Int destinationCoordinates;
 
+    public Vector2Int StartCoordinates { get { return startCoordinates; } }
+
     Node startNode;
     Node destinationNode;
     Node currentSearchNode;
@@ -43,10 +45,10 @@ public class PathFinder : MonoBehaviour
         //    directions = directionsCounterClockWise;
     }
 
-    public List<Node> GetPath()
+    public List<Node> GetPath(Vector2Int coordinates)
     {
         gridManager.ResetNodes();
-        BreadthFirstSearch();
+        BreadthFirstSearch(coordinates);
         return BuildPath();
     }
 
@@ -79,7 +81,7 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    void BreadthFirstSearch()
+    void BreadthFirstSearch(Vector2Int coordinates)
     {
         frontier.Clear();
         reached.Clear();
@@ -88,9 +90,9 @@ public class PathFinder : MonoBehaviour
         bool isRunning = true;
 
         // Add node to be explored
-        frontier.Enqueue(startNode);
+        frontier.Enqueue(grid[coordinates]);
         // Track all the node have been explored, avoid revisiting
-        reached.Add(startNode.coordinates, startNode);
+        reached.Add(coordinates, grid[coordinates]);
 
         while(frontier.Count > 0 && isRunning)
         {

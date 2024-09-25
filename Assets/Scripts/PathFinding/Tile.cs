@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
     // For creating tower
-    [SerializeField] Tower towerPrefab;
     [SerializeField] bool isPlaceable;
 
     BuildManager buildManager;
     GridManager gridManager;
     Vector2Int coordinates;
 
-    public bool IsPlaceable { get { return isPlaceable; } }
+    public bool IsPlaceable { get { return isPlaceable; } set { isPlaceable = value; } }
 
     void Start()
     {
@@ -29,18 +29,22 @@ public class Tile : MonoBehaviour
         if (gridManager != null)
         {
             coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
-            //if (!gridManager.Grid[coordinates].isWalkable)
             if (gameObject.transform.parent.tag != "Path")
                 gridManager.BlockNode(coordinates);
         }
     }
 
+    public Vector3 GetTilePostition()
+    {
+        return transform.position;
+    }
+
     void OnMouseDown()
     {
-        if(isPlaceable)
+        if(!EventSystem.current.IsPointerOverGameObject())
         {
-            bool isPlaced = buildManager.CreateTower(towerPrefab, transform.position);
-            isPlaceable = !isPlaced;
+            if (isPlaceable)
+                buildManager.selectTile(this);
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent (typeof (Tile))]
 public class WaypointRenderer : MonoBehaviour
@@ -32,12 +33,13 @@ public class WaypointRenderer : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (tile.IsPlaceable)
+        if (tile.IsPlaceable && !EventSystem.current.IsPointerOverGameObject())
             rend.materials[1].color = hoverColor;
     }
+
     void OnMouseExit()
     {
-        if (transform.parent.tag != "Path")
+        if (tile.IsPlaceable)
             rend.materials[1].color = startColor;
     }
 }

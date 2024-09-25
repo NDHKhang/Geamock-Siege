@@ -7,7 +7,23 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
     [SerializeField] Vector3 positionOffset;
+    public Vector3 PostitionOffset { get {  return positionOffset; } }
+
     [SerializeField] ParticleSystem buildEffect;
+
+    // Store prefab to build
+    [SerializeField] Tower tower1;
+    [SerializeField] Tower tower2;
+
+    public Tower Tower1 { get { return tower1; } }
+    public Tower Tower2 { get { return tower2; } }
+
+    //Tile selectedTile;
+    Tower towerToBuild;
+
+    [SerializeField] TileUI tileUI;
+
+    public Tower TowerToBuild {  get { return towerToBuild; } set { towerToBuild = value; } }
 
     Bank bank;
 
@@ -21,20 +37,24 @@ public class BuildManager : MonoBehaviour
         bank = Bank.instance;
     }
 
-    public bool CreateTower(Tower tower, Vector3 tile)
+    public void CreateTower(Tile tile)
     {
-        if(bank == null) return false;
-
-        if(bank.CurrentBalance >= tower.Cost)
+        if(bank == null) return;
+        if (bank.CurrentBalance >= towerToBuild.Cost)
         {
-            Instantiate(tower.gameObject, tile + positionOffset, Quaternion.identity);
-            // Spawn build effect then destroy it
-            Instantiate(buildEffect, tile + positionOffset, Quaternion.identity);
+            Instantiate(towerToBuild.gameObject, tile.transform.position + positionOffset, Quaternion.identity);
+            // Spawn build effect
+            Instantiate(buildEffect, tile.transform.position + positionOffset, Quaternion.identity);
 
-            bank.Withdraw(tower.Cost);
-            return true;
+            bank.Withdraw(towerToBuild.Cost);
+            tile.IsPlaceable = false;
         }
+    }
 
-        return false;
+    public void selectTile(Tile tile)
+    {
+        if(tileUI == null) return;
+
+        tileUI.SetTarget(tile);
     }
 }
