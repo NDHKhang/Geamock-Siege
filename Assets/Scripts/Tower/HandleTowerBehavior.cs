@@ -90,12 +90,11 @@ public class HandleTowerBehavior : MonoBehaviour
         if(target == null) return;
 
         GameObject projectileGO = Instantiate(projectilePrefab, firePosition.position, firePosition.rotation);
-        Projectile projectile = projectileGO.GetComponent<Projectile>();
 
         // Finding enemy
-        if (projectile != null)
+        if (tower != null)
         {
-            projectile.Seek(target);
+            tower.Seek(target, projectileGO);
         }
     }
 

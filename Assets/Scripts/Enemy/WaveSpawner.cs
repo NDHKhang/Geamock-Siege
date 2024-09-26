@@ -20,7 +20,10 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] Transform startPosition;
  
     int waveIndex = 0;
+
     bool isWaveDone = true;
+
+    GameObject enemy;
 
     void Update()
     {
@@ -44,7 +47,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject enemy = ObjectPool.SharedInstance.GetPooledObject();
+        enemy = ObjectPool.SharedInstance.GetPooledObject();
 
         if (enemy == null) return;
 

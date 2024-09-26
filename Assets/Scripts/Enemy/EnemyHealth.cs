@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int startHealth = 10;
-    int health;
+    [SerializeField] float startHealth = 10f;
+    float health;
 
     Enemy enemy;
     Tower tower;
@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
 

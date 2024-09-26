@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 4553476433537995974}
   - component: {fileID: 447864759560538914}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BankUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

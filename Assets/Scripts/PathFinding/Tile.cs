@@ -9,8 +9,15 @@ public class Tile : MonoBehaviour
 {
     // For creating tower
     [SerializeField] bool isPlaceable;
+    [SerializeField] bool canPlaceTower;
+
+    GameObject tower;
+    Tower towerComponent;
+
+    public bool CanPlaceTower { get { return canPlaceTower; } }
 
     BuildManager buildManager;
+    Bank bank;
     GridManager gridManager;
     Vector2Int coordinates;
 
@@ -21,7 +28,10 @@ public class Tile : MonoBehaviour
         gridManager = GridManager.instance;
         HandleTile();
 
+        if(!isPlaceable) canPlaceTower = false;
+
         buildManager = BuildManager.instance;
+        bank = Bank.instance;
     }
 
     void HandleTile()
@@ -43,8 +53,49 @@ public class Tile : MonoBehaviour
     {
         if(!EventSystem.current.IsPointerOverGameObject())
         {
-            if (isPlaceable)
-                buildManager.selectTile(this);
+            if (canPlaceTower)
+            {
+                buildManager.SelectTile(this);
+            }
         }
+    }
+
+    public void CreateTower(Tower towerToBuild, ParticleSystem buildEffect)
+    {
+        if (bank == null) return;
+        if (bank.CurrentBalance >= towerToBuild.Cost && isPlaceable)
+        {
+            GameObject _tower = Instantiate(towerToBuild.gameObject, transform.position + buildManager.PostitionOffset, Quaternion.identity);
+            // Spawn build effect
+            Instantiate(buildEffect, transform.position + buildManager.PostitionOffset, Quaternion.identity);
+
+            bank.Withdraw(towerToBuild.Cost);
+            isPlaceable = false;
+            tower = _tower;
+            towerComponent = tower.GetComponent<Tower>();
+            towerComponent.SellPriceUpgrade();
+        }
+    }
+    public void UpgradeTower()
+    {
+        bank.Withdraw(towerComponent.Upgrade());
+        towerComponent.SellPriceUpgrade();
+    }
+
+    public void SellTower()
+    {
+        bank.Deposit(towerComponent.SellPriceUpgrade());
+        Destroy(tower);
+        isPlaceable = true;
+    }
+
+    public int getUpgradePrice()
+    {
+        return towerComponent.UpgradeCostBase * towerComponent.NumUpgrade;
+    }
+
+    public int getSellPrice()
+    {
+        return towerComponent.sellPrice;
     }
 }

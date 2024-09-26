@@ -13,6 +13,8 @@ public class WaypointRenderer : MonoBehaviour
     Renderer rend;
     Tile tile;
 
+    BuildManager buildManager;
+
     void Awake()
     {
         rend = transform.Find("Mesh").GetComponent<Renderer>();
@@ -23,6 +25,8 @@ public class WaypointRenderer : MonoBehaviour
     {
         if (transform.parent.tag != "Path")
             MaterialColor();
+
+        buildManager = BuildManager.instance;
     }
 
     void MaterialColor()
@@ -33,13 +37,15 @@ public class WaypointRenderer : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (tile.IsPlaceable && !EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
+        if (tile.CanPlaceTower)
             rend.materials[1].color = hoverColor;
     }
 
     void OnMouseExit()
     {
-        if (tile.IsPlaceable)
+        if (tile.CanPlaceTower)
             rend.materials[1].color = startColor;
     }
 }

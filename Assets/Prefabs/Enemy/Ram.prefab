@@ -134,14 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19fff18182114d46955003fcfb7f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   speed: 1
   positionOffset: {x: 0, y: 1.4, z: 0}
 --- !u!114 &166702274185061919
@@ -169,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd62147047ff78143a7cd2ac3ecd86a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReward: 25
-  goldPenalty: 25
+  goldReward: 50
+  goldPenalty: 0
 --- !u!65 &8450576843693484772
 BoxCollider:
   m_ObjectHideFlags: 0

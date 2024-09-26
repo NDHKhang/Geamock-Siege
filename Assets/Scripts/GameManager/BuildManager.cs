@@ -20,10 +20,11 @@ public class BuildManager : MonoBehaviour
 
     //Tile selectedTile;
     Tower towerToBuild;
+    public Tower TowerToBuild {  get { return towerToBuild; } set { towerToBuild = value; } }
 
     [SerializeField] TileUI tileUI;
-
-    public Tower TowerToBuild {  get { return towerToBuild; } set { towerToBuild = value; } }
+    //Store currently selected tile
+    Tile selectedTile;
 
     Bank bank;
 
@@ -37,24 +38,30 @@ public class BuildManager : MonoBehaviour
         bank = Bank.instance;
     }
 
-    public void CreateTower(Tile tile)
+    public void CreateTower()
     {
-        if(bank == null) return;
-        if (bank.CurrentBalance >= towerToBuild.Cost)
-        {
-            Instantiate(towerToBuild.gameObject, tile.transform.position + positionOffset, Quaternion.identity);
-            // Spawn build effect
-            Instantiate(buildEffect, tile.transform.position + positionOffset, Quaternion.identity);
-
-            bank.Withdraw(towerToBuild.Cost);
-            tile.IsPlaceable = false;
-        }
+        selectedTile.CreateTower(TowerToBuild, buildEffect);
+        DeselectTile();
     }
 
-    public void selectTile(Tile tile)
+    public void SelectTile(Tile tile)
     {
-        if(tileUI == null) return;
+        if (selectedTile == tile)
+        {
+            DeselectTile();
+            return;
+        }
 
-        tileUI.SetTarget(tile);
+        DeselectTile();
+        selectedTile = tile;
+
+        if (tileUI == null) return;
+        tileUI.SetTarget(selectedTile);
+    }
+
+    public void DeselectTile()
+    {
+        selectedTile = null;
+        tileUI.HideUI();
     }
 }
