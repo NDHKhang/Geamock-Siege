@@ -18,12 +18,11 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeCountdownText;
 
     [SerializeField] Transform startPosition;
+
+    [HideInInspector] public static int EnemiesAlive = 0;
+    [SerializeField] Wave[] waves;
  
     int waveIndex = 0;
-
-    bool isWaveDone = true;
-
-    GameObject enemy;
 
     void Update()
     {
@@ -32,22 +31,21 @@ public class WaveSpawner : MonoBehaviour
 
     void HandleSpawn()
     {
+        if (EnemiesAlive > 0) return;
+
         if (countdown <= 0f)
         {
-            countdown = timeBetweenWaves;
-            isWaveDone = false;
             StartCoroutine(SpawnWave());
+            countdown = timeBetweenWaves;
         }
 
-        if (isWaveDone)
-            countdown -= Time.deltaTime;
-
         textCountdown();
+        countdown -= Time.deltaTime;
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        enemy = ObjectPool.SharedInstance.GetPooledObject();
+        enemy = ObjectPool.SharedInstance.GetPooledObject(enemy.gameObject.name);
 
         if (enemy == null) return;
 
@@ -55,24 +53,32 @@ public class WaveSpawner : MonoBehaviour
         enemy.transform.position = startPosition.position;
         enemy.transform.rotation = startPosition.rotation;
 
-        if (enemy != null)
-            enemy.SetActive(true);
+        enemy.SetActive(true);
+        EnemiesAlive++;
     }
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
-        for (int i = 0; i < waveIndex; i++)
+        Wave wave = waves[waveIndex];
+        for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnTimer);
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(spawnTimer / wave.rate);
         }
-        isWaveDone = true;
+        waveIndex++;
+
+        if (waveIndex == waves.Length)
+        {
+            Debug.Log("Won");
+            this.enabled = false;
+            yield return null;
+        }
     }
 
     void textCountdown()
     {
-        string time = Mathf.Round(countdown).ToString();
-        timeCountdownText.text = $"Next Wave: {time}";
+        //string time = Mathf.Round(countdown).ToString();
+        //timeCountdownText.text = $"Next Wave: {time}";
+        timeCountdownText.text = $"Next Wave: {string.Format("{0:00.00}", countdown)}";
     }
 }

@@ -24,9 +24,10 @@ public class BuildManager : MonoBehaviour
 
     [SerializeField] TileUI tileUI;
     //Store currently selected tile
-    Tile selectedTile;
+    [HideInInspector]
+    public Tile selectedTile;
 
-    Bank bank;
+    PlayerStats bank;
 
     void Awake()
     {
@@ -35,7 +36,7 @@ public class BuildManager : MonoBehaviour
 
     void Start()
     {
-        bank = Bank.instance;
+        bank = PlayerStats.instance;
     }
 
     public void CreateTower()
@@ -61,7 +62,6 @@ public class BuildManager : MonoBehaviour
 
     public void DeselectTile()
     {
-        selectedTile = null;
         tileUI.HideUI();
     }
 }

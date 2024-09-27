@@ -8,12 +8,9 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 30f;
     [SerializeField] float scrollSpeed = 10f;
+
     [SerializeField] float minY = 40f;
     [SerializeField] float maxY = 120f;
-
-    //[SerializeField] float maxX = ;
-    //[SerializeField] float maxY
-
     [SerializeField] float minX = -40f;
     [SerializeField] float maxX = 90f;
     [SerializeField] float minZ = -50f;

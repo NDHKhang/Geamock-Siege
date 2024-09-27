@@ -14,6 +14,6 @@ public class BalanceUI : MonoBehaviour
 
     void updateBalance()
     {
-        displayBalance.text = $"${Bank.instance.CurrentBalance}";
+        displayBalance.text = $"${PlayerStats.instance.CurrentBalance}";
     }
 }

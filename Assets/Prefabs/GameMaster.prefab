@@ -9,10 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 98159678885002817}
-  - component: {fileID: 5051818182388848691}
-  - component: {fileID: 7151727690642761390}
   - component: {fileID: 7518808241008526714}
-  - component: {fileID: 2334937166574402831}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -35,33 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5051818182388848691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8674275893453528825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05585485204774141ab3dfcea250d8c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startBalance: 100
-  currentBalance: 0
---- !u!114 &7151727690642761390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8674275893453528825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998b69667e9f98c47b01a65a2cb5d24c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayBalance: {fileID: 0}
 --- !u!114 &7518808241008526714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,19 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionOffset: {x: 0, y: 1.9, z: 0}
   buildEffect: {fileID: 198112720091331062, guid: c559c1920b5d04e6d83aa4464fba5c68, type: 3}
---- !u!114 &2334937166574402831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8674275893453528825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0632019250bc0744a13111964b24188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: 2
-  timeBetweenWaves: 5
-  spawnTimer: 2
-  timeCountdownText: {fileID: 0}
+  tower1: {fileID: 0}
+  tower2: {fileID: 0}
+  tileUI: {fileID: 0}
+  selectedTile: {fileID: 0}

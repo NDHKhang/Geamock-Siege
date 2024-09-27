@@ -1,13 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ObjectPool : MonoBehaviour
 {
+    //public static ObjectPool SharedInstance;
+    //List<GameObject> pooledObjects;
+    //[SerializeField] GameObject objectToPool;
+    //[SerializeField] [Range(0, 50)] int amountToPool;
+
+    //void Awake()
+    //{
+    //    SharedInstance = this;
+    //    SpawnObject();
+    //}
+
+    //void SpawnObject()
+    //{
+    //    pooledObjects = new List<GameObject>();
+    //    GameObject tmp;
+    //    for (int i = 0; i < amountToPool; i++)
+    //    {
+    //        tmp = Instantiate(objectToPool, objectToPool.transform.position, Quaternion.identity, transform);
+    //        tmp.SetActive(false);
+    //        pooledObjects.Add(tmp);
+    //    }
+    //}
+
+    //public GameObject GetPooledObject()
+    //{
+    //    // Find and return the first object currently not active
+    //    for (int i = 0; i < amountToPool; i++)
+    //    {
+    //        if (!pooledObjects[i].activeInHierarchy)
+    //        {
+    //            return pooledObjects[i];
+    //        }
+    //    }
+    //    return null;
+    //}
+
     public static ObjectPool SharedInstance;
-    List<GameObject> pooledObjects;
-    [SerializeField] GameObject objectToPool;
-    [SerializeField] [Range(0, 50)] int amountToPool;
+    
+    [System.Serializable]
+    public class Pool
+    {
+        public string tag;
+        public GameObject prefab;
+        public int size;
+    }
+
+    public List<Pool> pools;
+    public Dictionary<string, Queue<GameObject>> poolDictionary;
 
 
     void Awake()
@@ -18,26 +63,37 @@ public class ObjectPool : MonoBehaviour
 
     void SpawnObject()
     {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (Pool pool in pools)
         {
-            tmp = Instantiate(objectToPool, objectToPool.transform.position, Quaternion.identity, transform);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+
+            for(int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = 
+                    Instantiate(pool.prefab, transform);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+
+            poolDictionary.Add(pool.tag, objectPool);
         }
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(string tag)
     {
-        // Find and return the first object currently not active
-        for (int i = 0; i < amountToPool; i++)
+        // Check if tag is in pool
+        if (!poolDictionary.ContainsKey(tag)) return null;
+
+        foreach (GameObject obj in poolDictionary[tag])
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            if (!obj.activeInHierarchy)
             {
-                return pooledObjects[i];
+                return obj;
             }
         }
+
         return null;
     }
 }

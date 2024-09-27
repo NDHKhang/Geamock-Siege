@@ -1,29 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int goldReward = 25;
-    [SerializeField] int goldPenalty = 25;
+    //[SerializeField] int goldPenalty = 25;
 
-    Bank bank;
+    [SerializeField] float startHealth = 10f;
+    float health;
+
+    Tower tower;
+    PlayerStats bank;
+
+    [Header("Unity stuff")]
+    [SerializeField] Image healthBar;
+
+    void OnEnable()
+    {
+        health = startHealth;
+    }
 
     void Start()
     {
-        bank = Bank.instance;
+        bank = PlayerStats.instance;
     }
 
     public void RewardGold()
     {
         if (bank == null) return;
-        Bank.instance.Deposit(goldReward);
+        PlayerStats.instance.Deposit(goldReward);
     }
 
-    public void LostGold()
-    {
-        if (bank == null) return;
+    //public void LostGold()
+    //{
+    //    if (bank == null) return;
         
-        Bank.instance.Withdraw(goldPenalty);
+    //    Bank.instance.Withdraw(goldPenalty);
+    //}
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+
+        healthBar.fillAmount = health / startHealth;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        WaveSpawner.EnemiesAlive--;
+        gameObject.SetActive(false);
+        RewardGold();
     }
 }

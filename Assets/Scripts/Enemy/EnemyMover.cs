@@ -46,7 +46,7 @@ public class EnemyMover : MonoBehaviour
 
     void FinishPath()
     {
-        enemy.LostGold();
+        PlayerStats.instance.TakeDamage(1);
         gameObject.SetActive(false);
     }
 

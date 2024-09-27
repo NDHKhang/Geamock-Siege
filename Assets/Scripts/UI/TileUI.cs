@@ -73,13 +73,19 @@ public class TileUI : MonoBehaviour
 
     public void HideUI()
     {
-        buildUI.SetActive(false);
-        upgradeSellUI.SetActive(false);
+        if(buildManager != null)
+        {
+            buildManager.selectedTile = null;
+            buildUI.SetActive(false);
+            upgradeSellUI.SetActive(false);
+        }
     }
 
     public void UpgradeTower()
     {
-        tile.UpgradeTower();
+        bool isUpgrade = tile.UpgradeTower();
+        if (!isUpgrade) return;
+
         Instantiate(upgradeEffect, tile.transform.position + buildManager.PostitionOffset, Quaternion.identity);
         DisplayUpgradeSell();
     }
@@ -88,6 +94,6 @@ public class TileUI : MonoBehaviour
     {
         tile.SellTower();
         Instantiate(sellEffect, tile.transform.position + buildManager.PostitionOffset, Quaternion.identity);
-        buildManager.DeselectTile();
+        HideUI();
     }
 }

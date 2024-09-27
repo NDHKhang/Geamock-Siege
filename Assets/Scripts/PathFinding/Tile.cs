@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour
     public bool CanPlaceTower { get { return canPlaceTower; } }
 
     BuildManager buildManager;
-    Bank bank;
+    PlayerStats bank;
     GridManager gridManager;
     Vector2Int coordinates;
 
@@ -31,7 +31,7 @@ public class Tile : MonoBehaviour
         if(!isPlaceable) canPlaceTower = false;
 
         buildManager = BuildManager.instance;
-        bank = Bank.instance;
+        bank = PlayerStats.instance;
     }
 
     void HandleTile()
@@ -76,10 +76,19 @@ public class Tile : MonoBehaviour
             towerComponent.SellPriceUpgrade();
         }
     }
-    public void UpgradeTower()
+    public bool UpgradeTower()
     {
-        bank.Withdraw(towerComponent.Upgrade());
-        towerComponent.SellPriceUpgrade();
+        int upgradePrice = towerComponent.GetUpgradePrice();
+        if (bank.CurrentBalance >= upgradePrice)
+        {
+            towerComponent.Upgrade();
+            bank.Withdraw(upgradePrice);
+            towerComponent.SellPriceUpgrade();
+
+            return true;
+        }
+
+        return false;
     }
 
     public void SellTower()

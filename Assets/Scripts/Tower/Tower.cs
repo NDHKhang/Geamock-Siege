@@ -33,6 +33,8 @@ public class Tower : MonoBehaviour
     [SerializeField] int numUpgrade = 1;
     public int NumUpgrade { get { return numUpgrade; } set { numUpgrade = value; } }
 
+    int totalUpgradePrice;
+
     // enemy target
     Transform target;
 
@@ -91,7 +93,7 @@ public class Tower : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        EnemyHealth e = enemy.GetComponent<EnemyHealth>();
+        Enemy e = enemy.GetComponent<Enemy>();
 
         if (e != null)
         {
@@ -99,18 +101,26 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public int Upgrade()
+    public int GetUpgradePrice()
     {
-        DamagePerHit += 1f;
         upgradeCost = upgradeCostBase * numUpgrade;
-        numUpgrade++;
 
         return upgradeCost;
     }
 
+    public void Upgrade()
+    {
+        DamagePerHit += 1f;
+        totalUpgradePrice += upgradeCost;
+        numUpgrade++;
+    }
+
     public int SellPriceUpgrade()
     {
-        sellPrice = cost * numUpgrade;
+        if (numUpgrade <= 1) 
+            sellPrice = cost / 2;
+        else
+            sellPrice = totalUpgradePrice / 2;
 
         return sellPrice;
     }
