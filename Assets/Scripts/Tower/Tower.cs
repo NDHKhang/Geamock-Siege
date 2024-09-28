@@ -39,16 +39,16 @@ public class Tower : MonoBehaviour
     Transform target;
 
     // projectile speed
-    [SerializeField] float speed = 10f;
+    //[SerializeField] float speed = 10f;
     GameObject projectile;
 
     BuildManager buildManager;
 
-    public void Seek(Transform _target, GameObject _projectile)
-    {
-        target = _target;
-        projectile = _projectile;
-    }
+    //public void Seek(Transform _target, GameObject _projectile)
+    //{
+    //    target = _target;
+    //    projectile = _projectile;
+    //}
 
     void Start()
     {
@@ -56,50 +56,6 @@ public class Tower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        ProjectileHandle();
-    }
-
-    void ProjectileHandle()
-    {
-        if (projectile == null) return;
-
-        if (target == null)
-        {
-            Destroy(projectile.gameObject);
-            return;
-        }
-
-        // Get the direction of the target then shoot bullet
-        Vector3 dir = target.position - projectile.transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
-
-        // Check if bullet reach the target or not
-        if (dir.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }
-
-        projectile.transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-    }
-
-    void HitTarget()
-    {
-        Damage(target);
-        Destroy(projectile.gameObject);
-    }
-
-    void Damage(Transform enemy)
-    {
-        Enemy e = enemy.GetComponent<Enemy>();
-
-        if (e != null)
-        {
-            e.TakeDamage(DamagePerHit);
-        }
-    }
 
     public int GetUpgradePrice()
     {

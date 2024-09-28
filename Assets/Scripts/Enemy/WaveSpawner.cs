@@ -31,7 +31,15 @@ public class WaveSpawner : MonoBehaviour
 
     void HandleSpawn()
     {
+        // Only spawn more enemy if current wave is done
         if (EnemiesAlive > 0) return;
+
+        // Win level if survive after number of waves
+        if (waveIndex == waves.Length)
+        {
+            GameManager.instance.Win();
+            this.enabled = false;
+        }
 
         if (countdown <= 0f)
         {
@@ -59,26 +67,19 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        PlayerStats.instance.rounds++;
+
         Wave wave = waves[waveIndex];
         for (int i = 0; i < wave.count; i++)
         {
             SpawnEnemy(wave.enemy);
             yield return new WaitForSeconds(spawnTimer / wave.rate);
         }
-        waveIndex++;
-
-        if (waveIndex == waves.Length)
-        {
-            Debug.Log("Won");
-            this.enabled = false;
-            yield return null;
-        }
+        waveIndex++;  
     }
 
     void textCountdown()
     {
-        //string time = Mathf.Round(countdown).ToString();
-        //timeCountdownText.text = $"Next Wave: {time}";
-        timeCountdownText.text = $"Next Wave: {string.Format("{0:00.00}", countdown)}";
+        timeCountdownText.text = $"Wave {PlayerStats.instance.rounds}/{waves.Length}: {string.Format("{0:00.00}", countdown)}";
     }
 }

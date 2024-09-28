@@ -47,6 +47,7 @@ public class EnemyMover : MonoBehaviour
     void FinishPath()
     {
         PlayerStats.instance.TakeDamage(1);
+        WaveSpawner.EnemiesAlive--;
         gameObject.SetActive(false);
     }
 

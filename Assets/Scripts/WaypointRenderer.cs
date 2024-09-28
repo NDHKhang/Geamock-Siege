@@ -37,6 +37,8 @@ public class WaypointRenderer : MonoBehaviour
 
     void OnMouseEnter()
     {
+        if (GameManager.instance.isOver) return;
+
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
         if (tile.CanPlaceTower)
@@ -45,6 +47,8 @@ public class WaypointRenderer : MonoBehaviour
 
     void OnMouseExit()
     {
+        if (GameManager.instance.isOver) return;
+
         if (tile.CanPlaceTower)
             rend.materials[1].color = startColor;
     }

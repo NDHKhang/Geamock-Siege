@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class HealthBarUI : MonoBehaviour
 {
-    Quaternion rotate;
-    void Awake()
-    {
-        rotate = transform.rotation;
-    }
+    float lockX = 45;
+    float lockY = 0;
+    float lockZ = 0;
+
     void LateUpdate()
     {
-        transform.rotation = rotate;
+        transform.rotation = Quaternion.Euler(lockX, lockY, lockZ);
     }
 }

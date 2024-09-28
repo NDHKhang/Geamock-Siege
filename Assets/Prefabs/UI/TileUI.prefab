@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1709663159594065107}
   - component: {fileID: 4939715679224927261}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TileUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 7414497474566612322}
   - component: {fileID: 3539505663533094848}
   - component: {fileID: 1279328297065404641}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 854652266395609574}
   - component: {fileID: 2824225625236597989}
   - component: {fileID: 5535174720713409905}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 5953918908289667724}
   - component: {fileID: 6790661694550046342}
   - component: {fileID: 8897661014009739357}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PriceBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,8 +433,9 @@ GameObject:
   - component: {fileID: 8901298545852642781}
   - component: {fileID: 5580571439476301764}
   - component: {fileID: 8138122757483493849}
-  m_Layer: 0
-  m_Name: Image
+  - component: {fileID: 700493765849351707}
+  m_Layer: 5
+  m_Name: Close Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,6 +498,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &700493765849351707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180676097166191646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8138122757483493849}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4939715679224927261}
+        m_TargetAssemblyTypeName: TileUI, Assembly-CSharp
+        m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2207996933549724672
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +566,7 @@ GameObject:
   - component: {fileID: 5094128813208118760}
   - component: {fileID: 1081486377315580912}
   - component: {fileID: 2085292912970265032}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ballista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +699,7 @@ GameObject:
   - component: {fileID: 144585036113726151}
   - component: {fileID: 2768593538216376515}
   - component: {fileID: 792704148580335852}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PriceBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,8 +775,9 @@ GameObject:
   - component: {fileID: 300942140518639572}
   - component: {fileID: 5309476079206948800}
   - component: {fileID: 1232383704665782787}
-  m_Layer: 0
-  m_Name: Image
+  - component: {fileID: 6101097228049188556}
+  m_Layer: 5
+  m_Name: Close Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,6 +840,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6101097228049188556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541628282697750649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1232383704665782787}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4939715679224927261}
+        m_TargetAssemblyTypeName: TileUI, Assembly-CSharp
+        m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3081936027998229282
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +908,7 @@ GameObject:
   - component: {fileID: 1476456894404867351}
   - component: {fileID: 1110073456420136495}
   - component: {fileID: 2588611712802952388}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +1042,7 @@ GameObject:
   - component: {fileID: 8777712055202491460}
   - component: {fileID: 7116325053126098497}
   - component: {fileID: 7886650163708388207}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradeSellUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1144,7 @@ GameObject:
   - component: {fileID: 8915326399635849646}
   - component: {fileID: 660950629264174838}
   - component: {fileID: 6342002482034627448}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1219,7 @@ GameObject:
   - component: {fileID: 7543552350614110124}
   - component: {fileID: 7792614298954623554}
   - component: {fileID: 1166114001304032503}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SellText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1358,7 @@ GameObject:
   - component: {fileID: 5791129687005796357}
   - component: {fileID: 2165674713821964335}
   - component: {fileID: 3591326027994834673}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1490,7 @@ GameObject:
   - component: {fileID: 6640284572657756906}
   - component: {fileID: 1665539361288406043}
   - component: {fileID: 7059622245313787176}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1627,7 @@ GameObject:
   - component: {fileID: 4806088057683419430}
   - component: {fileID: 3808937238455077305}
   - component: {fileID: 758438458026388773}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BuildUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +1729,7 @@ GameObject:
   - component: {fileID: 7303659721779133940}
   - component: {fileID: 5716299169066469481}
   - component: {fileID: 7029883339047481086}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1756,7 +1870,7 @@ GameObject:
   - component: {fileID: 718047604478720071}
   - component: {fileID: 2252172943164687863}
   - component: {fileID: 5437782246871265037}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1888,7 +2002,7 @@ GameObject:
   - component: {fileID: 5665743290226418137}
   - component: {fileID: 1376421670958485227}
   - component: {fileID: 6833415793956567071}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2138,7 @@ GameObject:
   - component: {fileID: 8100203359774781940}
   - component: {fileID: 1047017339210552312}
   - component: {fileID: 4334123272379900614}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

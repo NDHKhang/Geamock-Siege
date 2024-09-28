@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 98159678885002817}
   - component: {fileID: 7518808241008526714}
+  - component: {fileID: 3833878613608149696}
+  - component: {fileID: 7603874319361195081}
+  - component: {fileID: 9193862162337598326}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -46,7 +49,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionOffset: {x: 0, y: 1.9, z: 0}
   buildEffect: {fileID: 198112720091331062, guid: c559c1920b5d04e6d83aa4464fba5c68, type: 3}
-  tower1: {fileID: 0}
-  tower2: {fileID: 0}
+  tower1: {fileID: -1036029714928303599, guid: dfa5dc53a844e774f9e441de8b2c58ee, type: 3}
+  tower2: {fileID: 7409307372560062614, guid: ff8b180e9aecf4640bdbfa10f2f40e3b, type: 3}
   tileUI: {fileID: 0}
   selectedTile: {fileID: 0}
+--- !u!114 &3833878613608149696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674275893453528825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddafbfa23e4b2549b8770f1bc26893d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7603874319361195081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674275893453528825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24041f612e6b9d4e95813c2fc47a2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startBalance: 100
+  playerHealth: 10
+  healthBar: {fileID: 0}
+--- !u!114 &9193862162337598326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674275893453528825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998b69667e9f98c47b01a65a2cb5d24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayBalance: {fileID: 0}

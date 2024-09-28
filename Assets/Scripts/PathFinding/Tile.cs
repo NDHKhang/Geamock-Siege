@@ -57,6 +57,10 @@ public class Tile : MonoBehaviour
             {
                 buildManager.SelectTile(this);
             }
+            else
+            {
+                buildManager.DeselectTile();
+            }
         }
     }
 

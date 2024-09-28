@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int goldReward = 25;
-    //[SerializeField] int goldPenalty = 25;
 
     [SerializeField] float startHealth = 10f;
     float health;
@@ -32,13 +31,6 @@ public class Enemy : MonoBehaviour
         if (bank == null) return;
         PlayerStats.instance.Deposit(goldReward);
     }
-
-    //public void LostGold()
-    //{
-    //    if (bank == null) return;
-        
-    //    Bank.instance.Withdraw(goldPenalty);
-    //}
 
     public void TakeDamage(float amount)
     {

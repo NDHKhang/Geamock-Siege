@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     float health;
     [SerializeField] Image healthBar;
 
+    [HideInInspector]
+    public int rounds;
+
     public static PlayerStats instance;
 
     void Awake()
@@ -41,8 +44,7 @@ public class PlayerStats : MonoBehaviour
 
         if (health <= 0)
         {
-            //Game Over;
-            Debug.Log("Game Over");
+            GameManager.instance.GameOver();
         }
     }
 }
