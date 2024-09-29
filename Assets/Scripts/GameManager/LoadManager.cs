@@ -13,8 +13,18 @@ public class LoadManager : MonoBehaviour
             instance = this;
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

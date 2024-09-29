@@ -13,12 +13,6 @@ public class MenuUI : MonoBehaviour
         loadManager = LoadManager.instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToggleState()
     {
         pauseUI.SetActive(!pauseUI.activeSelf);
@@ -46,6 +40,6 @@ public class MenuUI : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        loadManager.Quit();
     }
 }
