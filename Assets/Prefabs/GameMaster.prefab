@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7518808241008526714}
   - component: {fileID: 3833878613608149696}
   - component: {fileID: 7603874319361195081}
-  - component: {fileID: 9193862162337598326}
+  - component: {fileID: 5586658870850747022}
+  - component: {fileID: 7444703487987862332}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -77,10 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24041f612e6b9d4e95813c2fc47a2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startBalance: 100
+  startBalance: 1000
   playerHealth: 10
   healthBar: {fileID: 0}
---- !u!114 &9193862162337598326
+  rounds: 0
+--- !u!114 &5586658870850747022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +91,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 8674275893453528825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998b69667e9f98c47b01a65a2cb5d24c, type: 3}
+  m_Script: {fileID: 11500000, guid: eb95c1ca615b62447bfe1e7ad650e4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayBalance: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  gameWinUI: {fileID: 0}
+  isOver: 0
+--- !u!114 &7444703487987862332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674275893453528825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0632019250bc0744a13111964b24188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdown: 2
+  timeBetweenWaves: 5
+  spawnTimer: 1.5
+  timeCountdownText: {fileID: 0}
+  startPosition: {fileID: 0}
+  waves: []

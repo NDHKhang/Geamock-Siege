@@ -145,7 +145,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8078286362653131341}
-  - component: {fileID: 957334593036206437}
   m_Layer: 0
   m_Name: WaveUI
   m_TagString: Untagged
@@ -169,24 +168,6 @@ Transform:
   - {fileID: 7835767654403792689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &957334593036206437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972335699253620263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0632019250bc0744a13111964b24188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: 2
-  timeBetweenWaves: 5
-  spawnTimer: 1
-  timeCountdownText: {fileID: 5904258594755825651}
-  startPosition: {fileID: 0}
-  waves: []
 --- !u!1 &5989117477293305433
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +181,7 @@ GameObject:
   - component: {fileID: 4678752847071664535}
   - component: {fileID: 5418945517256273608}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TimeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

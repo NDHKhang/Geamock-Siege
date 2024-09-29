@@ -47,7 +47,10 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         WaveSpawner.EnemiesAlive--;
+        Debug.Log(WaveSpawner.EnemiesAlive);
+
         gameObject.SetActive(false);
+        healthBar.fillAmount = startHealth;
         RewardGold();
     }
 }

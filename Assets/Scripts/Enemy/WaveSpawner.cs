@@ -13,7 +13,6 @@ public class WaveSpawner : MonoBehaviour
     [Tooltip("Time between each wave")]
     [SerializeField] [Min(0f)] float timeBetweenWaves = 5f;
     [Tooltip("Time between spawning each enemy in a wave")]
-    [SerializeField] [Min(0f)]float spawnTimer = 1f;
 
     [SerializeField] TextMeshProUGUI timeCountdownText;
 
@@ -73,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < wave.count; i++)
         {
             SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(spawnTimer / wave.rate);
+            yield return new WaitForSeconds(1f / wave.rate);
         }
         waveIndex++;  
     }

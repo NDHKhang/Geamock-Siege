@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2402454868701569275}
   - component: {fileID: 114939059062944399}
   - component: {fileID: 167700593028085956}
+  - component: {fileID: 1393777394448313299}
   m_Layer: 5
   m_Name: BankUI
   m_TagString: Untagged
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1393777394448313299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608388697708761521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998b69667e9f98c47b01a65a2cb5d24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayBalance: {fileID: 804886323848129843}
 --- !u!1 &5158596101880088165
 GameObject:
   m_ObjectHideFlags: 0

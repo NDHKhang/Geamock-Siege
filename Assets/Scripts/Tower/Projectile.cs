@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
 
     void ProjectileHandle()
     {
-        if (target == null)
+        if (!target.gameObject.activeInHierarchy)
         {
             Destroy(gameObject);
             return;
