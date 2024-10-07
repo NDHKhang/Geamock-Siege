@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldReward: 25
-  startHealth: 10
+  startHealth: 15
   healthBar: {fileID: 4557004234350106254}
 --- !u!65 &8450576843693484772
 BoxCollider:

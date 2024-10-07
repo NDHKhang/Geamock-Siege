@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBalance: 1000
-  playerHealth: 10
+  playerHealth: 5
   healthBar: {fileID: 0}
   rounds: 0
 --- !u!114 &5586658870850747022
@@ -109,9 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0632019250bc0744a13111964b24188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 2
+  countdown: 5
   timeBetweenWaves: 5
-  spawnTimer: 1.5
   timeCountdownText: {fileID: 0}
   startPosition: {fileID: 0}
   waves: []

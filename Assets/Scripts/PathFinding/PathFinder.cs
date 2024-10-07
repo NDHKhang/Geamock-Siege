@@ -35,14 +35,6 @@ public class PathFinder : MonoBehaviour
             startNode = grid[startCoordinates];
             destinationNode = grid[destinationCoordinates];
         }
-
-        //Vector2Int[] directions;
-        //int randomNum = Random.Range(0, 2);
-
-        //if (randomNum == 0)
-        //    directions = directionsClockWise;
-        //else
-        //    directions = directionsCounterClockWise;
     }
 
     public List<Node> GetPath(Vector2Int coordinates)
@@ -52,11 +44,11 @@ public class PathFinder : MonoBehaviour
         return BuildPath();
     }
 
-    void ExploreNeighbors()
+    void ExploreNeighbors(Vector2Int[] directions)
     {
         List<Node> neighbors = new List<Node>(); // Store neighbor explore node
 
-        foreach (Vector2Int direction in directionsClockWise)
+        foreach (Vector2Int direction in directions)
         {
             // Explore each direction clockwise
             Vector2Int neighborCoords = currentSearchNode.coordinates + direction;
@@ -94,13 +86,22 @@ public class PathFinder : MonoBehaviour
         // Track all the node have been explored, avoid revisiting
         reached.Add(coordinates, grid[coordinates]);
 
-        while(frontier.Count > 0 && isRunning)
+        Vector2Int[] directions;
+
+        //Random path
+        int randomNum = Random.Range(0, 2);
+        if (randomNum == 0)
+            directions = directionsClockWise;
+        else
+            directions = directionsCounterClockWise;
+
+        while (frontier.Count > 0 && isRunning)
         {
             // get node from queue then mark the current node is explored
             currentSearchNode = frontier.Dequeue();
             currentSearchNode.isExplored = true;
 
-            ExploreNeighbors();
+            ExploreNeighbors(directions);
 
             // Check if current node reach destination or not
             if(currentSearchNode.coordinates == destinationCoordinates)

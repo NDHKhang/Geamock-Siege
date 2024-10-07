@@ -110,10 +110,10 @@ MonoBehaviour:
   scrollSpeed: 10
   minY: 40
   maxY: 120
-  minX: -40
-  maxX: 90
-  minZ: -50
-  maxZ: 50
+  minX: 50
+  maxX: 150
+  minZ: -10
+  maxZ: 60
 --- !u!1 &6848642713388996698
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MenuUI : MonoBehaviour
     void Start()
     {
         loadManager = LoadManager.instance;
+        WaveSpawner.EnemiesAlive = 0;
+        Time.timeScale = 1f;
     }
 
     public void ToggleState()
@@ -28,14 +31,19 @@ public class MenuUI : MonoBehaviour
         }
     }
 
+    public void NextLevel()
+    {
+        loadManager.NextScene();
+    }
+
+    public void MainMenu()
+    {
+        loadManager.MenuScene();
+    }
+
     public void Restart()
     {
-        if(loadManager != null)
-        {
-            WaveSpawner.EnemiesAlive = 0;
-            Time.timeScale = 1f;
-            loadManager.ReloadScene();
-        }
+        loadManager.ReloadScene();
     }
 
     public void Quit()

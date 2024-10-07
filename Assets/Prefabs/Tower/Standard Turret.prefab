@@ -64,14 +64,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 2
   fireCountdown: 0
-  range: 25
+  range: 20
   cost: 50
   upgradeCostBase: 100
   upgradeCost: 100
   sellPrice: 0
   damagePerHit: 1
   numUpgrade: 1
-  speed: 70
 --- !u!1 &3528909203720604645
 GameObject:
   m_ObjectHideFlags: 0

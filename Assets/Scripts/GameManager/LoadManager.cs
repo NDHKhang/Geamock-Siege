@@ -13,9 +13,19 @@ public class LoadManager : MonoBehaviour
             instance = this;
     }
 
+    public void MenuScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ReloadScene()

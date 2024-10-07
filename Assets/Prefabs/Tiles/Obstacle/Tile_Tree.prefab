@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: isPlaceable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2341323021139245562, guid: dc16290ce5107024682c9f9906d0be37, type: 3}
+      propertyPath: canPlaceTower
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4309148636592612956, guid: dc16290ce5107024682c9f9906d0be37, type: 3}
       propertyPath: m_Enabled
       value: 1
