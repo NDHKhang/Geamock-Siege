@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameWinUI;
 
     public static GameManager instance;
+    private MusicPlayer musicPlayer;
 
     [HideInInspector]
     public bool isOver = false;
@@ -18,10 +19,16 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
+    void Start()
+    {
+        musicPlayer = MusicPlayer.instance;
+    }
+
     public void GameOver()
     {
         Time.timeScale = 0f;
         isOver = true;
+        musicPlayer.PauseMusic();
         gameOverUI.SetActive(true);
     }
 
@@ -29,6 +36,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         isOver = true;
+        musicPlayer.PauseMusic();
         gameWinUI.SetActive(true);
     }
 }

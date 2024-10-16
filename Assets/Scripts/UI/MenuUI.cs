@@ -8,12 +8,16 @@ public class MenuUI : MonoBehaviour
     LoadManager loadManager;
     [SerializeField] GameObject menuUI;
     [SerializeField] GameObject pauseUI;
+    private MusicPlayer musicPlayer;
 
     void Start()
     {
         loadManager = LoadManager.instance;
+        musicPlayer = MusicPlayer.instance;
+
         WaveSpawner.EnemiesAlive = 0;
         Time.timeScale = 1f;
+        musicPlayer.PlayMusic();
     }
 
     public void ToggleState()
@@ -24,10 +28,12 @@ public class MenuUI : MonoBehaviour
         if(menuUI.activeSelf)
         {
             Time.timeScale = 0f;
+            musicPlayer.PauseMusic();
         }
         else
         {
             Time.timeScale = 1f;
+            musicPlayer.PlayMusic();
         }
     }
 
