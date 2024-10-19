@@ -36,7 +36,7 @@ public class WaveSpawner : MonoBehaviour
         // Win level if survive after number of waves
         if (waveIndex == waves.Length)
         {
-            GameManager.instance.Win();
+            GameManager.instance.Invoke("Win", 0.5f);
             this.enabled = false;
         }
 
